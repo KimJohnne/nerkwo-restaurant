@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!-- ═══════════════════════════════════════════
+     VISUOSCOPE TEMPLATE: RESTAURANT / NYAMA CHOMA
+     
+     TO CUSTOMISE FOR A NEW CLIENT:
+     1. Replace all Nerkwo Restaurant with actual name
+     2. Replace Best Choma in Nairobi with their tagline
+     3. Replace South B with their area e.g. "Westlands"
+     4. Replace Plainsview Road, South B with their full address
+     5. Replace +254 721 541 206 with their phone number e.g. 0712345678
+     6. Replace 254721541206 with WhatsApp number e.g. 254712345678
+     7. Replace info@nerkworestaurant.co.ke with their email
+     8. Replace 10:00 AM – 10:00 PM Daily with opening hours
+     9. Update menu items and prices in the menu section
+     10. Change --amber accent colour if client has brand colours
+     
+     DEPLOY: Upload as index.html to GitHub repo → enable Pages
+═══════════════════════════════════════════ -->
+<title>Nerkwo Restaurant — South B, Nairobi</title>
+<meta name="description" content="Nerkwo Restaurant serves the best nyama choma and Kenyan cuisine in South B, Nairobi. Fresh meat, great vibes, and unforgettable flavours."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&family=Satisfy&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════ RESET & TOKENS ═══════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  /* BRAND COLOURS — update for each client */
+  --amber:    #c8862a;
+  --amber-l:  #e8a84a;
+  --amber-d:  #9a6418;
+  --cream:    #fdf6ec;
+  --cream-2:  #f5ead8;
+  --brown:    #2c1a0e;
+  --brown-2:  #3d2511;
+  --brown-3:  #5a3820;
+  --warm:     #7a4f2e;
+  --steel:    #8a7060;
+  --light:    #c8b09a;
+  --border:   rgba(200,134,42,.2);
+  --border-l: rgba(200,134,42,.08);
+  /* FONTS */
+  --font-h:   'Playfair Display', serif;
+  --font-s:   'Satisfy', cursive;
+  --font-b:   'Lato', sans-serif;
+  --ease:     cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-b);background:var(--cream);color:var(--brown);line-height:1.7;overflow-x:hidden}
+::selection{background:var(--amber);color:#fff}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--cream)}
+::-webkit-scrollbar-thumb{background:var(--amber);border-radius:2px}
+img{display:block;max-width:100%}
+
+/* ═══════════════════════ UTILS ═══════════════════════ */
+.container{max-width:1140px;margin:0 auto;padding:0 32px}
+.amber{color:var(--amber)}
+.sp{padding:96px 0}
+.sp-sm{padding:56px 0}
+.script{font-family:var(--font-s);color:var(--amber);font-size:1.3em;line-height:1.2;display:block;margin-bottom:4px}
+
+/* ═══════════════════════ NAV ═══════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  padding:0;
+  background:rgba(44,26,14,.96);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(200,134,42,.15);
+  transition:background .3s,border-color .3s;
+}
+nav.light{background:rgba(253,246,236,.97);border-bottom-color:var(--border)}
+nav.scrolled{box-shadow:0 4px 32px rgba(44,26,14,.2)}
+.nav-inner{display:flex;align-items:stretch;justify-content:space-between;height:70px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;cursor:pointer}
+.logo-emblem{width:40px;height:40px;border:1.5px solid var(--amber);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-emblem span{font-family:var(--font-h);font-size:18px;color:var(--amber);font-weight:700;line-height:1}
+.logo-words .l1{font-family:var(--font-h);font-size:17px;font-weight:700;color:var(--cream);letter-spacing:.5px;line-height:1.1}
+.logo-words .l2{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--amber);margin-top:1px}
+nav.light .logo-words .l1{color:var(--brown)}
+.nav-links{display:flex;align-items:center;list-style:none}
+.nav-links a{display:flex;align-items:center;height:70px;padding:0 18px;text-decoration:none;color:rgba(253,246,236,.7);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;cursor:pointer}
+.nav-links a:hover,.nav-links a.active{color:var(--amber);border-bottom-color:var(--amber)}
+nav.light .nav-links a{color:var(--warm)}
+nav.light .nav-links a:hover,nav.light .nav-links a.active{color:var(--amber-d)}
+.nav-res{display:flex;align-items:center;background:var(--amber);color:var(--brown);text-decoration:none;padding:0 24px;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;transition:background .2s;cursor:pointer;flex-shrink:0;border:none;font-family:var(--font-b)}
+.nav-res:hover{background:var(--amber-l)}
+.hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;margin:auto 0}
+.hbg span{display:block;width:22px;height:2px;background:var(--cream);border-radius:1px;transition:.3s}
+nav.light .hbg span{background:var(--brown)}
+
+/* ═══════════════════════ HERO ═══════════════════════ */
+.hero{height:100vh;min-height:640px;position:relative;overflow:hidden;display:flex;align-items:center}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1800&q=85&fit=crop') center/cover no-repeat}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(44,26,14,.92) 0%,rgba(44,26,14,.7) 50%,rgba(44,26,14,.4) 100%)}
+/* warm grain overlay */
+.hero-bg::before{content:'';position:absolute;inset:0;z-index:1;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");background-size:200px}
+.hero-con{position:relative;z-index:2;width:100%}
+.hero-inner{max-width:680px}
+.hero-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.hero-eyebrow-line{width:40px;height:1px;background:var(--amber);flex-shrink:0}
+.hero-eyebrow-txt{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--amber);font-weight:700}
+.hero h1{font-family:var(--font-h);font-size:clamp(52px,7vw,88px);font-weight:700;color:#fff;line-height:.95;letter-spacing:-1px;margin-bottom:24px}
+.hero h1 em{font-style:italic;color:var(--amber-l)}
+.hero-desc{color:rgba(253,246,236,.7);font-size:17px;font-weight:300;line-height:1.85;max-width:460px;margin-bottom:40px}
+.hero-acts{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.hero-badge{position:absolute;bottom:48px;right:0;background:rgba(44,26,14,.9);border:1px solid var(--border);padding:20px 24px;display:flex;gap:20px}
+.hb-item{text-align:center}
+.hb-num{font-family:var(--font-h);font-size:28px;color:var(--amber);line-height:1;font-weight:700}
+.hb-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--light);margin-top:3px}
+.hb-div{width:1px;background:var(--border);align-self:stretch}
+
+/* ═══════════════════════ BUTTONS ═══════════════════════ */
+.btn-amber{display:inline-flex;align-items:center;gap:8px;background:var(--amber);color:#fff;text-decoration:none;padding:14px 30px;font-family:var(--font-b);font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;transition:background .2s,transform .2s;border:none;cursor:pointer;border-radius:2px}
+.btn-amber:hover{background:var(--amber-l);transform:translateY(-2px)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;text-decoration:none;padding:14px 30px;font-family:var(--font-b);font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border:1px solid rgba(255,255,255,.3);transition:border-color .2s,color .2s;cursor:pointer;border-radius:2px}
+.btn-outline:hover{border-color:var(--amber);color:var(--amber)}
+.btn-amber-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--amber);text-decoration:none;padding:13px 28px;font-family:var(--font-b);font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border:1.5px solid var(--amber);transition:background .2s,color .2s;cursor:pointer;border-radius:2px}
+.btn-amber-outline:hover{background:var(--amber);color:#fff}
+.btn-brown{display:inline-flex;align-items:center;gap:8px;background:var(--brown);color:var(--cream);text-decoration:none;padding:14px 30px;font-family:var(--font-b);font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;transition:background .2s;cursor:pointer;border-radius:2px;border:none}
+.btn-brown:hover{background:var(--brown-2)}
+
+/* ═══════════════════════ SECTION HEADER ═══════════════════════ */
+.sec-hdr{margin-bottom:52px}
+.sec-hdr h2{font-family:var(--font-h);font-size:clamp(36px,4.5vw,54px);font-weight:700;line-height:1.05;letter-spacing:-.5px;margin-bottom:14px;color:var(--brown)}
+.sec-hdr h2 em{font-style:italic;color:var(--amber)}
+.sec-hdr p{color:var(--warm);font-size:16px;font-weight:300;max-width:500px;line-height:1.8}
+.sec-hdr.ctr{text-align:center}.sec-hdr.ctr p{margin:0 auto}
+.sec-hdr.lt h2,.sec-hdr.lt p{color:var(--cream)}.sec-hdr.lt p{color:var(--light)}
+
+/* ═══════════════════════ DIVIDER ═══════════════════════ */
+.ornament{display:flex;align-items:center;justify-content:center;gap:16px;margin:0 auto 48px;opacity:.5}
+.ornament-line{flex:1;max-width:80px;height:1px;background:var(--amber)}
+.ornament-icon{color:var(--amber);font-size:18px}
+
+/* ═══════════════════════ FEATURE STRIP ═══════════════════════ */
+.feature-strip{background:var(--brown);padding:32px 0;border-top:1px solid rgba(200,134,42,.15);border-bottom:1px solid rgba(200,134,42,.15)}
+.feature-strip-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.feat-item{padding:16px 24px;border-right:1px solid rgba(200,134,42,.15);display:flex;align-items:center;gap:14px}
+.feat-item:last-child{border-right:none}
+.feat-icon{font-size:24px;flex-shrink:0}
+.feat-title{font-family:var(--font-h);font-size:14px;font-weight:600;color:var(--cream);line-height:1.2}
+.feat-sub{font-size:11px;color:var(--light);font-weight:300;margin-top:2px}
+
+/* ═══════════════════════ MENU ═══════════════════════ */
+.menu-section{background:var(--cream)}
+.menu-tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:48px;overflow-x:auto}
+.menu-tab{padding:14px 24px;font-family:var(--font-b);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--warm);cursor:pointer;background:none;border:none;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;white-space:nowrap;flex-shrink:0}
+.menu-tab:hover,.menu-tab.active{color:var(--amber);border-bottom-color:var(--amber)}
+.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.menu-panel{display:none}.menu-panel.active{display:block}
+.menu-item{display:flex;align-items:flex-start;gap:20px;padding:24px 0;border-bottom:1px solid var(--border-l);position:relative}
+.menu-item:last-child{border-bottom:none}
+.menu-item-img{width:80px;height:80px;border-radius:4px;overflow:hidden;flex-shrink:0}
+.menu-item-img img{width:100%;height:100%;object-fit:cover;filter:saturate(.9)}
+.menu-item-body{flex:1}
+.menu-item-name{font-family:var(--font-h);font-size:17px;font-weight:600;color:var(--brown);margin-bottom:4px}
+.menu-item-desc{font-size:13px;color:var(--warm);font-weight:300;line-height:1.6}
+.menu-item-price{font-family:var(--font-h);font-size:18px;font-weight:700;color:var(--amber);flex-shrink:0;margin-top:2px}
+.menu-item-tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:2px 8px;border-radius:2px;margin-top:6px}
+.tag-popular{background:rgba(200,134,42,.15);color:var(--amber-d);border:1px solid var(--border)}
+.tag-new{background:rgba(44,26,14,.08);color:var(--brown);border:1px solid rgba(44,26,14,.15)}
+.tag-spicy{background:rgba(200,50,30,.1);color:#c83218;border:1px solid rgba(200,50,30,.2)}
+
+/* ═══════════════════════ ABOUT ═══════════════════════ */
+.about-section{background:var(--brown-2)}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-imgs{position:relative;height:560px}
+.about-img-main{position:absolute;top:0;left:0;width:75%;height:80%;overflow:hidden;border-radius:4px}
+.about-img-main img{width:100%;height:100%;object-fit:cover;filter:brightness(.85) saturate(.9)}
+.about-img-accent{position:absolute;bottom:0;right:0;width:55%;height:55%;overflow:hidden;border-radius:4px;border:4px solid var(--brown-2)}
+.about-img-accent img{width:100%;height:100%;object-fit:cover;filter:brightness(.85) saturate(.9)}
+.about-img-badge{position:absolute;top:50%;left:60%;transform:translate(-50%,-50%);background:var(--amber);padding:20px 24px;text-align:center;z-index:2;border-radius:2px}
+.aib-num{font-family:var(--font-h);font-size:40px;color:#fff;font-weight:700;line-height:1}
+.aib-lbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.8);margin-top:4px}
+.about-text p{color:var(--light);font-size:15px;font-weight:300;line-height:1.9;margin-bottom:16px}
+.about-sig{font-family:var(--font-s);font-size:32px;color:var(--amber);margin-top:24px}
+.about-sig-sub{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--light);margin-top:4px}
+
+/* ═══════════════════════ SPECIALS ═══════════════════════ */
+.specials{background:var(--cream-2)}
+.specials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.special-card{background:var(--cream);border-radius:4px;overflow:hidden;box-shadow:0 4px 20px rgba(44,26,14,.08);transition:transform .3s,box-shadow .3s}
+.special-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(44,26,14,.15)}
+.special-img{height:220px;overflow:hidden;position:relative}
+.special-img img{width:100%;height:100%;object-fit:cover;filter:saturate(.9) brightness(.95);transition:transform .5s,filter .4s}
+.special-card:hover .special-img img{transform:scale(1.05);filter:saturate(1) brightness(1)}
+.special-day{position:absolute;top:14px;left:14px;background:var(--amber);padding:5px 12px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff;border-radius:2px}
+.special-body{padding:22px 24px}
+.special-name{font-family:var(--font-h);font-size:20px;font-weight:700;color:var(--brown);margin-bottom:6px}
+.special-desc{font-size:13px;color:var(--warm);font-weight:300;line-height:1.65;margin-bottom:16px}
+.special-footer{display:flex;align-items:center;justify-content:space-between}
+.special-price{font-family:var(--font-h);font-size:22px;font-weight:700;color:var(--amber)}
+.special-price span{font-size:13px;font-weight:400;color:var(--warm);font-family:var(--font-b)}
+
+/* ═══════════════════════ GALLERY ═══════════════════════ */
+.gallery-section{background:var(--brown);padding:0}
+.gallery-header{padding:80px 0 48px;text-align:center}
+.gallery-mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:240px 240px;gap:3px}
+.gal-item{overflow:hidden;position:relative;cursor:pointer}
+.gal-item.tall{grid-row:span 2}
+.gal-item.wide{grid-column:span 2}
+.gal-item img{width:100%;height:100%;object-fit:cover;filter:brightness(.8) saturate(.85);transition:transform .5s,filter .4s}
+.gal-item:hover img{transform:scale(1.06);filter:brightness(.95) saturate(1)}
+.gal-ov{position:absolute;inset:0;background:rgba(200,134,42,0);transition:background .3s;display:flex;align-items:center;justify-content:center}
+.gal-item:hover .gal-ov{background:rgba(200,134,42,.15)}
+
+/* ═══════════════════════ TESTIMONIALS ═══════════════════════ */
+.reviews-section{background:var(--cream)}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.review-card{background:#fff;border-radius:6px;padding:28px;box-shadow:0 2px 16px rgba(44,26,14,.06);position:relative;border-top:3px solid var(--amber)}
+.review-stars{color:var(--amber);font-size:14px;letter-spacing:2px;margin-bottom:14px}
+.review-txt{font-family:var(--font-h);font-size:15px;font-style:italic;color:var(--warm);line-height:1.8;margin-bottom:20px;font-weight:400}
+.review-txt::before{content:'\201C';font-size:40px;color:var(--amber);opacity:.3;line-height:0;vertical-align:-16px;margin-right:4px}
+.review-auth{display:flex;align-items:center;gap:12px}
+.review-av{width:40px;height:40px;border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center;font-family:var(--font-h);font-size:15px;font-weight:700;color:#fff;flex-shrink:0}
+.review-name{font-size:14px;font-weight:700;color:var(--brown)}
+.review-meta{font-size:11px;color:var(--warm);margin-top:2px}
+
+/* ═══════════════════════ RESERVATION ═══════════════════════ */
+.res-section{background:var(--brown)}
+.res-inner{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.res-info{padding:64px 56px;background:var(--amber);display:flex;flex-direction:column;justify-content:space-between}
+.res-info h2{font-family:var(--font-h);font-size:42px;font-weight:700;color:#fff;line-height:1.05;margin-bottom:16px}
+.res-info p{color:rgba(255,255,255,.85);font-size:15px;font-weight:300;line-height:1.8;margin-bottom:32px}
+.res-details{display:flex;flex-direction:column;gap:16px}
+.res-detail{display:flex;gap:14px;align-items:flex-start}
+.res-detail-icon{font-size:18px;flex-shrink:0;margin-top:2px}
+.res-detail-lbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);font-weight:700}
+.res-detail-val{font-size:14px;color:#fff;font-weight:300;margin-top:2px;line-height:1.5}
+.res-form-wrap{padding:64px 56px;background:var(--brown-2)}
+.res-form-wrap h3{font-family:var(--font-h);font-size:28px;color:var(--cream);margin-bottom:28px}
+.fg{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.fg label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--light)}
+.fg input,.fg select,.fg textarea{background:var(--brown-3);border:1px solid rgba(200,134,42,.2);color:var(--cream);padding:12px 16px;font-family:var(--font-b);font-size:14px;font-weight:300;outline:none;transition:border-color .2s;resize:vertical;border-radius:2px}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--amber)}
+.fg select option{background:var(--brown-3)}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(200,176,154,.4)}
+.fr2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.btn-submit{width:100%;background:var(--amber);color:#fff;border:none;padding:15px;font-family:var(--font-b);font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background .2s;margin-top:8px}
+.btn-submit:hover{background:var(--amber-l)}
+
+/* ═══════════════════════ FOOTER ═══════════════════════ */
+footer{background:var(--brown);border-top:1px solid rgba(200,134,42,.1);padding:64px 0 0}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px}
+.ft-brand h3{font-family:var(--font-h);font-size:22px;font-weight:700;color:var(--cream);letter-spacing:.3px}
+.ft-brand .tagline{font-family:var(--font-s);font-size:18px;color:var(--amber);margin-top:4px}
+.ft-brand p{color:var(--light);font-size:13px;line-height:1.8;margin-top:12px;font-weight:300;max-width:240px}
+.ft-social{display:flex;gap:10px;margin-top:20px}
+.ft-social a{width:34px;height:34px;border:1px solid rgba(200,134,42,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;color:var(--light);font-size:12px;transition:border-color .2s,color .2s;cursor:pointer}
+.ft-social a:hover{border-color:var(--amber);color:var(--amber)}
+.ft-col h4{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--amber);margin-bottom:16px;font-weight:700}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.ft-col li,.ft-col a{color:var(--light);font-size:13px;text-decoration:none;transition:color .2s;cursor:pointer;font-weight:300}
+.ft-col a:hover{color:var(--amber)}
+.ft-bot{border-top:1px solid rgba(200,134,42,.1);padding:20px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.ft-bot p{color:var(--warm);font-size:12px}
+.ft-credit{color:rgba(200,134,42,.4)!important;font-size:11px!important;letter-spacing:1px}
+
+/* ═══════════════════════ CTA BAND ═══════════════════════ */
+.cta-band{background:url('https://images.unsplash.com/photo-1514190051997-0f6f39ca5cde?w=1400&q=80&fit=crop') center/cover fixed;position:relative;padding:96px 0}
+.cta-band::before{content:'';position:absolute;inset:0;background:rgba(44,26,14,.88)}
+.cta-inner{position:relative;z-index:1;text-align:center}
+.cta-inner h2{font-family:var(--font-h);font-size:clamp(36px,5vw,58px);color:#fff;font-weight:700;line-height:1.05;margin-bottom:14px}
+.cta-inner h2 em{font-style:italic;color:var(--amber-l)}
+.cta-inner p{color:rgba(255,255,255,.75);font-size:17px;font-weight:300;max-width:480px;margin:0 auto 36px;line-height:1.8}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* ═══════════════════════ PAGE TRANSITION ═══════════════════════ */
+#app{transition:opacity .22s var(--ease)}
+#app.fading{opacity:0}
+
+/* ═══════════════════════ ANIMATIONS ═══════════════════════ */
+.fu{opacity:0;transform:translateY(24px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.fu.vis{opacity:1;transform:translateY(0)}
+.fu.d1{transition-delay:.1s}.fu.d2{transition-delay:.2s}.fu.d3{transition-delay:.3s}
+
+/* ═══════════════════════ LIGHTBOX ═══════════════════════ */
+.lb{display:none;position:fixed;inset:0;background:rgba(44,26,14,.97);z-index:999;align-items:center;justify-content:center}
+.lb.open{display:flex}
+.lb img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:2px}
+.lb-close{position:absolute;top:20px;right:28px;background:none;border:none;color:var(--cream);font-size:32px;cursor:pointer;line-height:1;opacity:.7;transition:opacity .2s}
+.lb-close:hover{opacity:1}
+
+/* ═══════════════════════ RESPONSIVE ═══════════════════════ */
+@media(max-width:1024px){
+  .ft-grid{grid-template-columns:1fr 1fr}
+  .feature-strip-inner{grid-template-columns:1fr 1fr}
+  .specials-grid{grid-template-columns:1fr 1fr}
+  .reviews-grid{grid-template-columns:1fr 1fr}
+  .gallery-mosaic{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .gal-item.tall,.gal-item.wide{grid-row:span 1;grid-column:span 1;height:240px}
+}
+@media(max-width:768px){
+  .nav-links,.nav-res{display:none}
+  .hbg{display:flex}
+  nav.open .nav-links{display:flex;flex-direction:column;position:absolute;top:70px;left:0;right:0;background:var(--brown);border-bottom:1px solid var(--border);padding:8px 0;gap:0}
+  nav.open .nav-links a{height:48px;padding-left:24px;border-bottom:1px solid rgba(200,134,42,.1)}
+  nav.open .nav-res{display:flex;align-items:center;justify-content:center;height:48px}
+  .hero-badge{display:none}
+  .about-inner,.res-inner{grid-template-columns:1fr}
+  .about-imgs{height:340px}
+  .about-img-badge{display:none}
+  .menu-grid{grid-template-columns:1fr}
+  .specials-grid,.reviews-grid{grid-template-columns:1fr}
+  .ft-grid{grid-template-columns:1fr;gap:28px}
+  .fr2{grid-template-columns:1fr}
+  .feature-strip-inner{grid-template-columns:1fr 1fr}
+  .res-info{padding:40px 28px}
+  .res-form-wrap{padding:40px 28px}
+}
+@media(max-width:480px){
+  .feature-strip-inner{grid-template-columns:1fr}
+  .feat-item{border-right:none;border-bottom:1px solid rgba(200,134,42,.15)}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav id="nav">
+  <div class="container nav-inner">
+    <div class="nav-logo" onclick="go('home')">
+      <div class="logo-emblem"><span>N</span></div>
+      <div class="logo-words">
+        <div class="l1">Nerkwo Restaurant</div>
+        <div class="l2">South B · Nairobi</div>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a onclick="go('home')">Home</a></li>
+      <li><a onclick="go('menu')">Menu</a></li>
+      <li><a onclick="go('about')">About</a></li>
+      <li><a onclick="go('gallery')">Gallery</a></li>
+      <li><a onclick="go('contact')">Contact</a></li>
+    </ul>
+    <button class="nav-res" onclick="go('contact')">Reserve a Table</button>
+    <button class="hbg" id="hbg"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ═══ APP ═══ -->
+<div id="app"></div>
+
+<!-- ═══ LIGHTBOX ═══ -->
+<div class="lb" id="lb">
+  <button class="lb-close" onclick="closeLB()">×</button>
+  <img id="lb-img" src="" alt=""/>
+</div>
+
+<!-- ════════════════════════════════════════════
+     PAGE TEMPLATES
+════════════════════════════════════════════ -->
+
+<!-- HOME -->
+<template id="t-home">
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="container hero-con">
+    <div class="hero-inner">
+      <div class="hero-eyebrow"><div class="hero-eyebrow-line"></div><div class="hero-eyebrow-txt">South B · South B, Nairobi</div></div>
+      <h1>The Taste of<br/><em>Real Kenyan</em><br/>Cuisine</h1>
+      <p class="hero-desc">Fresh nyama choma, authentic Kenyan flavours, and warm hospitality — right in the heart of South B. Come eat with us.</p>
+      <div class="hero-acts">
+        <button class="btn-amber" onclick="go('contact')">Reserve a Table ›</button>
+        <button class="btn-outline" onclick="go('menu')">View Our Menu</button>
+      </div>
+    </div>
+    <div class="hero-badge">
+      <div class="hb-item"><div class="hb-num">★4.1</div><div class="hb-lbl">Google Rating</div></div>
+      <div class="hb-div"></div>
+      <div class="hb-item"><div class="hb-num">3,286</div><div class="hb-lbl">Reviews</div></div>
+      <div class="hb-div"></div>
+      <div class="hb-item"><div class="hb-num">10+</div><div class="hb-lbl">Yrs Open</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE STRIP -->
+<div class="feature-strip">
+  <div class="container">
+    <div class="feature-strip-inner">
+      <div class="feat-item fu"><span class="feat-icon">🔥</span><div><div class="feat-title">Fresh Nyama Choma Daily</div><div class="feat-sub">Sourced fresh every morning</div></div></div>
+      <div class="feat-item fu d1"><span class="feat-icon">🎵</span><div><div class="feat-title">Pool Tables & Big Screen</div><div class="feat-sub">Fri & Sat from 7pm</div></div></div>
+      <div class="feat-item fu d2"><span class="feat-icon">🅿️</span><div><div class="feat-title">Free Parking</div><div class="feat-sub">Ample secure parking</div></div></div>
+      <div class="feat-item fu d3"><span class="feat-icon">📦</span><div><div class="feat-title">Takeaway & Delivery</div><div class="feat-sub">WhatsApp your order</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SPECIALS -->
+<section class="specials sp">
+  <div class="container">
+    <div class="sec-hdr ctr fu">
+      <span class="script">Chef's Selection</span>
+      <h2>Our <em>House Specials</em></h2>
+      <p>These are the dishes our regulars keep coming back for. Made fresh, served hot, every single day.</p>
+    </div>
+    <div class="ornament fu"><div class="ornament-line"></div><div class="ornament-icon">✦</div><div class="ornament-line"></div></div>
+    <div class="specials-grid">
+      <div class="special-card fu">
+        <div class="special-img"><img loading="lazy" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80&fit=crop" alt="Nyama Choma"/><span class="special-day">All Day</span></div>
+        <div class="special-body">
+          <div class="special-name">Signature Nyama Choma</div>
+          <div class="special-desc">Slow-roasted goat or beef over charcoal, seasoned with our house blend. Served with kachumbari and ugali.</div>
+          <div class="special-footer"><div class="special-price">KES 900 <span>/ kg</span></div><button class="btn-amber-outline" onclick="go('menu')" style="font-size:11px;padding:8px 16px">Order Now</button></div>
+        </div>
+      </div>
+      <div class="special-card fu d1">
+        <div class="special-img"><img loading="lazy" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80&fit=crop" alt="Mixed Grill"/><span class="special-day">Weekends</span></div>
+        <div class="special-body">
+          <div class="special-name">Mixed Grill Platter</div>
+          <div class="special-desc">A feast for two — ribs, chicken, sausages, and choma cuts with chips, kachumbari, and dipping sauces.</div>
+          <div class="special-footer"><div class="special-price">KES 2,800 <span>for 2</span></div><button class="btn-amber-outline" onclick="go('menu')" style="font-size:11px;padding:8px 16px">Order Now</button></div>
+        </div>
+      </div>
+      <div class="special-card fu d2">
+        <div class="special-img"><img loading="lazy" src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=600&q=80&fit=crop" alt="Chicken"/><span class="special-day">Daily</span></div>
+        <div class="special-body">
+          <div class="special-name">Kuku Choma Quarter</div>
+          <div class="special-desc">Whole chicken marinated overnight and roasted to perfection. Served with mukimo or chips. The crowd favourite.</div>
+          <div class="special-footer"><div class="special-price">KES 650 <span>/ quarter</span></div><button class="btn-amber-outline" onclick="go('menu')" style="font-size:11px;padding:8px 16px">Order Now</button></div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px"><button class="btn-amber-outline" onclick="go('menu')">View Full Menu ›</button></div>
+  </div>
+</section>
+
+<!-- ABOUT PREVIEW -->
+<section class="about-section sp">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-imgs fu">
+        <div class="about-img-main"><img loading="lazy" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80&fit=crop" alt="Restaurant interior"/></div>
+        <div class="about-img-accent"><img loading="lazy" src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=600&q=80&fit=crop" alt="Food close up"/></div>
+        <div class="about-img-badge"><div class="aib-num">10+</div><div class="aib-lbl">Years Serving<br/>Nairobi</div></div>
+      </div>
+      <div class="fu d1">
+        <div class="sec-hdr lt" style="margin-bottom:28px">
+          <span class="script">Our Story</span>
+          <h2 style="color:var(--cream)">Where Every Meal<br/>Feels Like <em>Home</em></h2>
+          <p>We've been feeding Nairobi for over a decade — built on the belief that great food, good company, and a warm atmosphere are all anyone ever really needs.</p>
+        </div>
+        <p style="color:var(--light);font-size:15px;font-weight:300;line-height:1.9;margin-bottom:16px">What started as a small choma spot has grown into one of South B's most beloved restaurants. We source our meat fresh daily from trusted local farmers, and every dish is prepared with the same care our founder put into that very first fire.</p>
+        <p style="color:var(--light);font-size:15px;font-weight:300;line-height:1.9;margin-bottom:28px">Walk-ins are always welcome, and every table feels like a seat at a family gathering. That's the Nerkwo Restaurant way.</p>
+        <button class="btn-amber" onclick="go('about')">Our Full Story ›</button>
+        <div class="about-sig" style="margin-top:28px">The Nerkwo Family</div>
+        <div class="about-sig-sub">South B · Since 2010</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY STRIP -->
+<div style="display:grid;grid-template-columns:repeat(5,1fr);height:200px;gap:2px">
+  <div style="overflow:hidden"><img loading="lazy" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&q=75&fit=crop" style="width:100%;height:100%;object-fit:cover;filter:brightness(.75) saturate(.85)" alt=""/></div>
+  <div style="overflow:hidden"><img loading="lazy" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=400&q=75&fit=crop" style="width:100%;height:100%;object-fit:cover;filter:brightness(.75) saturate(.85)" alt=""/></div>
+  <div style="overflow:hidden"><img loading="lazy" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&q=75&fit=crop" style="width:100%;height:100%;object-fit:cover;filter:brightness(.75) saturate(.85)" alt=""/></div>
+  <div style="overflow:hidden"><img loading="lazy" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=75&fit=crop" style="width:100%;height:100%;object-fit:cover;filter:brightness(.75) saturate(.85)" alt=""/></div>
+  <div style="overflow:hidden"><img loading="lazy" src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=400&q=75&fit=crop" style="width:100%;height:100%;object-fit:cover;filter:brightness(.75) saturate(.85)" alt=""/></div>
+</div>
+<div style="text-align:center;padding:24px 0;background:var(--brown)"><button class="btn-outline" onclick="go('gallery')" style="font-size:12px">View Full Gallery ›</button></div>
+
+<!-- REVIEWS -->
+<section class="reviews-section sp">
+  <div class="container">
+    <div class="sec-hdr ctr fu"><span class="script">What They Say</span><h2>Our Guests <em>Love Us</em></h2></div>
+    <div class="ornament fu"><div class="ornament-line"></div><div class="ornament-icon">✦</div><div class="ornament-line"></div></div>
+    <div class="reviews-grid">
+      <div class="review-card fu"><div class="review-stars">★★★★★</div><p class="review-txt">Hands down the best nyama choma in South B. The meat is always fresh, the portions are generous, and the kachumbari is out of this world. My go-to every weekend.</p><div class="review-auth"><div class="review-av">MN</div><div><div class="review-name">Jael B.</div><div class="review-meta">Regular · South B · Google Review</div></div></div></div>
+      <div class="review-card fu d1"><div class="review-stars">★★★★★</div><p class="review-txt">It's a lovely place in South B to chill and dine with friends. Specialise in fresh roast or fried goat meat — you can literally pick your own cut from the butchery. Service is great.</p><div class="review-auth"><div class="review-av">DK</div><div><div class="review-name">Meshack S.</div><div class="review-meta">Local regular · Google Review</div></div></div></div>
+      <div class="review-card fu d2"><div class="review-stars">★★★★★</div><p class="review-txt">Best place for Nyama Choma or fried this side of the highway. Great take-out service too. The crowd is that of mature, serious people having real conversations over good food.</p><div class="review-auth"><div class="review-av">SW</div><div><div class="review-name">Peter M.</div><div class="review-meta">Weekly regular · Google Review</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band"><div class="container"><div class="cta-inner fu"><h2>Hungry? <em>Come on in.</em></h2><p>Walk-ins always welcome. Reserve a table to guarantee your spot — especially on weekends.</p><div class="cta-btns"><button class="btn-amber" onclick="go('contact')">Reserve a Table ›</button><a href="https://wa.me/254721541206" target="_blank" class="btn-outline">Order on WhatsApp</a></div></div></div></div>
+</template>
+
+<!-- MENU -->
+<template id="t-menu">
+<div style="padding:130px 0 64px;background:var(--cream-2);position:relative;border-bottom:1px solid var(--border)">
+  <div style="position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1400&q=70&fit=crop') center/cover;opacity:.08"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div style="font-size:12px;color:var(--warm);letter-spacing:1px;margin-bottom:16px;cursor:pointer" onclick="go('home')">Home / <span style="color:var(--amber)">Menu</span></div>
+    <span class="script" style="font-size:28px">What We're Serving</span>
+    <h1 style="font-family:var(--font-h);font-size:clamp(48px,6vw,80px);font-weight:700;color:var(--brown);line-height:.95;letter-spacing:-.5px;margin:10px 0 14px">OUR MENU</h1>
+    <p style="color:var(--warm);font-size:16px;font-weight:300;max-width:500px">Fresh ingredients, honest cooking, generous portions. All menu items are available for dine-in, takeaway, and WhatsApp delivery.</p>
+  </div>
+</div>
+
+<section class="menu-section sp">
+  <div class="container">
+    <div class="menu-tabs fu">
+      <button class="menu-tab active" data-tab="choma">Nyama Choma</button>
+      <button class="menu-tab" data-tab="mains">Mains</button>
+      <button class="menu-tab" data-tab="sides">Sides & Salads</button>
+      <button class="menu-tab" data-tab="drinks">Drinks</button>
+    </div>
+
+    <!-- CHOMA -->
+    <div class="menu-panel active fu" id="tab-choma">
+      <div class="menu-grid">
+        <div>
+          <div class="menu-item"><div class="menu-item-img"><img loading="lazy" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=200&q=80&fit=crop" alt="Goat Choma"/></div><div class="menu-item-body"><div class="menu-item-name">Mbuzi Choma</div><div class="menu-item-desc">Slow-roasted goat over charcoal. Seasoned with our house blend. Served with kachumbari.</div><span class="menu-item-tag tag-popular">Most Popular</span></div><div class="menu-item-price">KES 1,400<br/><small style="font-size:11px;color:var(--warm);font-weight:300">/kg</small></div></div>
+          <div class="menu-item"><div class="menu-item-img"><img loading="lazy" src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=200&q=80&fit=crop" alt="Beef Choma"/></div><div class="menu-item-body"><div class="menu-item-name">Nyama ya Ng'ombe</div><div class="menu-item-desc">Prime beef cuts grilled to order. Tender, juicy, and perfectly spiced.</div></div><div class="menu-item-price">KES 1,200<br/><small style="font-size:11px;color:var(--warm);font-weight:300">/kg</small></div></div>
+          <div class="menu-item"><div class="menu-item-img"><img loading="lazy" src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=200&q=80&fit=crop" alt="Chicken Choma"/></div><div class="menu-item-body"><div class="menu-item-name">Kuku Choma</div><div class="menu-item-desc">Whole chicken marinated overnight. Full, half, or quarter. Crispy skin, juicy inside.</div><span class="menu-item-tag tag-popular">Crowd Favourite</span></div><div class="menu-item-price">KES 650<br/><small style="font-size:11px;color:var(--warm);font-weight:300">/quarter</small></div></div>
+        </div>
+        <div>
+          <div class="menu-item"><div class="menu-item-img"><img loading="lazy" src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=200&q=80&fit=crop" alt="Ribs"/></div><div class="menu-item-body"><div class="menu-item-name">Spare Ribs</div><div class="menu-item-desc">Pork or beef ribs, slow cooked then finished on the grill. Fall-off-the-bone tender.</div><span class="menu-item-tag tag-new">New on Menu</span></div><div class="menu-item-price">KES 1,200<br/><small style="font-size:11px;color:var(--warm);font-weight:300">/rack</small></div></div>
+          <div class="menu-item"><div class="menu-item-img"><img loading="lazy" src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=200&q=80&fit=crop" alt="Mixed Grill"/></div><div class="menu-item-body"><div class="menu-item-name">Mixed Grill Platter</div><div class="menu-item-desc">Goat, beef, chicken, and sausage all on one platter. Perfect for sharing. Feeds 2–3.</div><span class="menu-item-tag tag-popular">Best for Groups</span></div><div class="menu-item-price">KES 2,400<br/><small style="font-size:11px;color:var(--warm);font-weight:300">/platter</small></div></div>
+          <div class="menu-item"><div class="menu-item-img"><img loading="lazy" src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=200&q=80&fit=crop" alt="Mutura"/></div><div class="menu-item-body"><div class="menu-item-name">Mutura (Kenyan Sausage)</div><div class="menu-item-desc">Traditional hand-made Kenyan sausage, grilled over charcoal. Served with chilli sauce.</div><span class="menu-item-tag tag-spicy">Spicy Available</span></div><div class="menu-item-price">KES 350<br/><small style="font-size:11px;color:var(--warm);font-weight:300">/portion</small></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAINS -->
+    <div class="menu-panel fu" id="tab-mains">
+      <div class="menu-grid">
+        <div>
+          <div class="menu-item"><div class="menu-item-img"><img loading="lazy" src="https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=200&q=80&fit=crop" alt="Ugali Stew"/></div><div class="menu-item-body"><div class="menu-item-name">Ugali & Beef Stew</div><div class="menu-item-desc">Thick cornmeal ugali with rich slow-cooked beef stew. A Kenyan classic done right.</div><span class="menu-item-tag tag-popular">Local Favourite</span></div><div class="menu-item-price">KES 450</div></div>
+          <div class="menu-item"><div class="menu-item-img"><img loading="lazy" src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=200&q=80&fit=crop" alt="Pilau"/></div><div class="menu-item-body"><div class="menu-item-name">Pilau ya Nyumbani</div><div class="menu-item-desc">Fragrant spiced rice cooked with beef or chicken. Topped with caramelised onions.</div></div><div class="menu-item-price">KES 500</div></div>
+          <div class="menu-item"><div class="menu-item-img"><img loading="lazy" src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=200&q=80&fit=crop" alt="Mokimo"/></div><div class="menu-item-body"><div class="menu-item-name">Mukimo & Stew</div><div class="menu-item-desc">Mashed potatoes, corn, peas, and greens — a central Kenya favourite with any stew.</div></div><div class="menu-item-price">KES 480</div></div>
+        </div>
+        <div>
+          <div class="menu-item"><div class="menu-item-img"><img loading="lazy" src="https://images.unsplash.com/photo-1547592180-85f173990554?w=200&q=80&fit=crop" alt="Chips"/></div><div class="menu-item-body"><div class="menu-item-name">Chips Kuku</div><div class="menu-item-desc">Crispy fries topped with our signature fried chicken pieces and kachumbari. A Nairobi street food classic.</div><span class="menu-item-tag tag-popular">Street Classic</span></div><div class="menu-item-price">KES 550</div></div>
+          <div class="menu-item"><div class="menu-item-img"><img loading="lazy" src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=200&q=80&fit=crop" alt="Githeri"/></div><div class="menu-item-body"><div class="menu-item-name">Special Githeri</div><div class="menu-item-desc">Maize and beans cooked with tomatoes, onions, and spices. Served with chapati or ugali.</div></div><div class="menu-item-price">KES 380</div></div>
+          <div class="menu-item"><div class="menu-item-img"><img loading="lazy" src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=200&q=80&fit=crop" alt="Fish"/></div><div class="menu-item-body"><div class="menu-item-name">Tilapia ya Grilled</div><div class="menu-item-desc">Whole tilapia, marinated and grilled. Served with ugali and sukuma wiki. Fridays only.</div><span class="menu-item-tag tag-new">Fridays Only</span></div><div class="menu-item-price">KES 700</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIDES -->
+    <div class="menu-panel fu" id="tab-sides">
+      <div class="menu-grid">
+        <div>
+          <div class="menu-item"><div class="menu-item-body"><div class="menu-item-name">Kachumbari</div><div class="menu-item-desc">Fresh tomato, onion, and coriander salad. House-made daily.</div></div><div class="menu-item-price">KES 150</div></div>
+          <div class="menu-item"><div class="menu-item-body"><div class="menu-item-name">Chips (Fries)</div><div class="menu-item-desc">Thick-cut chips, crispy outside, fluffy inside. Seasoned with our house spice.</div></div><div class="menu-item-price">KES 250</div></div>
+          <div class="menu-item"><div class="menu-item-body"><div class="menu-item-name">Sukuma Wiki</div><div class="menu-item-desc">Sautéed collard greens with onions, tomatoes, and a hint of ginger.</div></div><div class="menu-item-price">KES 120</div></div>
+          <div class="menu-item"><div class="menu-item-body"><div class="menu-item-name">Chapati (2 pcs)</div><div class="menu-item-desc">Layered, soft, and slightly crispy. Made fresh throughout the day.</div><span class="menu-item-tag tag-popular">Popular</span></div><div class="menu-item-price">KES 80</div></div>
+        </div>
+        <div>
+          <div class="menu-item"><div class="menu-item-body"><div class="menu-item-name">Ugali</div><div class="menu-item-desc">Stiff cornmeal. The essential Kenyan side. Served with any main.</div></div><div class="menu-item-price">KES 100</div></div>
+          <div class="menu-item"><div class="menu-item-body"><div class="menu-item-name">Grilled Corn (Mahindi)</div><div class="menu-item-desc">Whole corn cob chargrilled with butter and chilli. A street food treat.</div></div><div class="menu-item-price">KES 100</div></div>
+          <div class="menu-item"><div class="menu-item-body"><div class="menu-item-name">Avocado Salad</div><div class="menu-item-desc">Fresh sliced avocado with lemon, onion, and a drizzle of olive oil.</div></div><div class="menu-item-price">KES 200</div></div>
+          <div class="menu-item"><div class="menu-item-body"><div class="menu-item-name">Sauces</div><div class="menu-item-desc">Chilli sauce, BBQ sauce, garlic mayo. Ask your server for today's selection.</div></div><div class="menu-item-price">KES 50</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DRINKS -->
+    <div class="menu-panel fu" id="tab-drinks">
+      <div class="menu-grid">
+        <div>
+          <div class="menu-item"><div class="menu-item-body"><div class="menu-item-name">Tusker Lager</div><div class="menu-item-desc">Kenya's iconic beer. Ice cold, always.</div><span class="menu-item-tag tag-popular">Classic</span></div><div class="menu-item-price">KES 300</div></div>
+          <div class="menu-item"><div class="menu-item-body"><div class="menu-item-name">Dawa Cocktail</div><div class="menu-item-desc">Vodka, lime, honey, and ice — the original Kenyan cocktail.</div><span class="menu-item-tag tag-popular">Signature</span></div><div class="menu-item-price">KES 600</div></div>
+          <div class="menu-item"><div class="menu-item-body"><div class="menu-item-name">Fresh Mango Juice</div><div class="menu-item-desc">Blended fresh from ripe Kenyan mangoes. No sugar added.</div></div><div class="menu-item-price">KES 250</div></div>
+          <div class="menu-item"><div class="menu-item-body"><div class="menu-item-name">Tangawizi (Ginger) Tea</div><div class="menu-item-desc">Freshly brewed Kenyan tea with ginger, served with milk. The perfect finish.</div></div><div class="menu-item-price">KES 150</div></div>
+        </div>
+        <div>
+          <div class="menu-item"><div class="menu-item-body"><div class="menu-item-name">Soft Drinks</div><div class="menu-item-desc">Coca-Cola, Fanta, Sprite, Stoney Tangawizi. All ice cold.</div></div><div class="menu-item-price">KES 150</div></div>
+          <div class="menu-item"><div class="menu-item-body"><div class="menu-item-name">Passion Juice</div><div class="menu-item-desc">Freshly squeezed passion fruit, lightly sweetened. Refreshing and sharp.</div><span class="menu-item-tag tag-popular">Favourite</span></div><div class="menu-item-price">KES 220</div></div>
+          <div class="menu-item"><div class="menu-item-body"><div class="menu-item-name">Mineral Water</div><div class="menu-item-desc">Still or sparkling — Keringet or Dasani available.</div></div><div class="menu-item-price">KES 100</div></div>
+          <div class="menu-item"><div class="menu-item-body"><div class="menu-item-name">Kenyan Coffee</div><div class="menu-item-desc">Freshly brewed AA Kenyan coffee. Black or with milk and sugar.</div></div><div class="menu-item-price">KES 200</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--cream-2);border:1px solid var(--border);border-radius:4px;padding:24px 28px;margin-top:48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
+      <div><div style="font-family:var(--font-h);font-size:18px;font-weight:600;color:var(--brown)">Want to order in advance?</div><div style="font-size:14px;color:var(--warm);margin-top:4px">WhatsApp your order and we'll have it ready when you arrive — or arrange delivery.</div></div>
+      <a href="https://wa.me/254721541206" target="_blank" class="btn-amber">Order on WhatsApp ›</a>
+    </div>
+  </div>
+</section>
+</template>
+
+<!-- ABOUT -->
+<template id="t-about">
+<div style="padding:130px 0 64px;background:var(--brown);position:relative;overflow:hidden;border-bottom:1px solid rgba(200,134,42,.1)">
+  <div style="position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=75&fit=crop') center/cover;opacity:.15"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div style="font-size:12px;color:var(--light);letter-spacing:1px;margin-bottom:16px;cursor:pointer" onclick="go('home')">Home / <span style="color:var(--amber)">About Us</span></div>
+    <span class="script" style="font-size:28px">Our Story</span>
+    <h1 style="font-family:var(--font-h);font-size:clamp(48px,6vw,80px);font-weight:700;color:var(--cream);line-height:.95;letter-spacing:-.5px;margin:10px 0 14px">ABOUT US</h1>
+    <p style="color:var(--light);font-size:16px;font-weight:300;max-width:500px">Built on passion, community, and the love of great Kenyan food.</p>
+  </div>
+</div>
+
+<section class="sp">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-imgs fu">
+        <div class="about-img-main"><img loading="lazy" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80&fit=crop" alt="Restaurant"/></div>
+        <div class="about-img-accent"><img loading="lazy" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80&fit=crop" alt="Dining"/></div>
+        <div class="about-img-badge"><div class="aib-num">2014</div><div class="aib-lbl">Year We<br/>Opened</div></div>
+      </div>
+      <div class="fu d1">
+        <span class="script">How It All Started</span>
+        <div class="sec-hdr" style="margin-bottom:24px"><h2>A Choma Spot<br/>Built on <em>Community</em></h2></div>
+        <p style="color:var(--warm);font-size:15px;font-weight:300;line-height:1.9;margin-bottom:16px">Nerkwo Restaurant started as a simple dream — to create a place in South B where families, friends, and neighbours could gather around great food and cold drinks without pretence or fuss.</p>
+        <p style="color:var(--warm);font-size:15px;font-weight:300;line-height:1.9;margin-bottom:16px">Our founder grew up cooking for family. The recipes you'll find on our menu today are the same ones that filled our childhood home with smoke and laughter every weekend.</p>
+        <p style="color:var(--warm);font-size:15px;font-weight:300;line-height:1.9;margin-bottom:28px">We source our meat from trusted local farmers, our vegetables from the market each morning, and our spice blends are still mixed in-house. Nothing on our menu comes from a packet.</p>
+        <button class="btn-amber" onclick="go('contact')">Visit Us Today ›</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="background:var(--brown);padding:64px 0">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(200,134,42,.15)">
+      <div style="padding:32px 24px;text-align:center;border-right:1px solid rgba(200,134,42,.15)"><div style="font-family:var(--font-h);font-size:48px;color:var(--amber);line-height:1;font-weight:700">10+</div><div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--light);margin-top:8px">Years Open</div></div>
+      <div style="padding:32px 24px;text-align:center;border-right:1px solid rgba(200,134,42,.15)"><div style="font-family:var(--font-h);font-size:48px;color:var(--amber);line-height:1;font-weight:700">3,286</div><div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--light);margin-top:8px">Google Reviews</div></div>
+      <div style="padding:32px 24px;text-align:center;border-right:1px solid rgba(200,134,42,.15)"><div style="font-family:var(--font-h);font-size:48px;color:var(--amber);line-height:1;font-weight:700">★4.1</div><div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--light);margin-top:8px">Average Rating</div></div>
+      <div style="padding:32px 24px;text-align:center"><div style="font-family:var(--font-h);font-size:48px;color:var(--amber);line-height:1;font-weight:700">Daily</div><div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--light);margin-top:8px">Fresh Sourcing</div></div>
+    </div>
+  </div>
+</div>
+
+<section class="specials sp" style="background:var(--cream-2)">
+  <div class="container">
+    <div class="sec-hdr ctr fu"><span class="script">Our Values</span><h2>The Way We <em>Cook & Serve</em></h2></div>
+    <div class="specials-grid">
+      <div class="special-card fu"><div class="special-img"><img loading="lazy" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80&fit=crop" alt="Fresh"/></div><div class="special-body"><div class="special-name">Always Fresh</div><div class="special-desc">We source our meat and vegetables fresh every single morning. Nothing sits overnight. If it's not fresh, it's not on the menu.</div></div></div>
+      <div class="special-card fu d1"><div class="special-img"><img loading="lazy" src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=600&q=80&fit=crop" alt="Generous"/></div><div class="special-body"><div class="special-name">Generous Portions</div><div class="special-desc">We don't believe in small plates. When you leave Nerkwo Restaurant, you leave full. That's our promise to every guest.</div></div></div>
+      <div class="special-card fu d2"><div class="special-img"><img loading="lazy" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80&fit=crop" alt="Community"/></div><div class="special-body"><div class="special-name">Community First</div><div class="special-desc">We support local farmers, hire locally, and give back to South B. This restaurant belongs to this community, not just us.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band"><div class="container"><div class="cta-inner fu"><h2>Come taste the <em>difference</em></h2><p>We'd love to welcome you. Walk in any day or reserve a table for a special occasion.</p><div class="cta-btns"><button class="btn-amber" onclick="go('contact')">Reserve a Table ›</button><button class="btn-outline" onclick="go('menu')">View Menu</button></div></div></div></div>
+</template>
+
+<!-- GALLERY -->
+<template id="t-gallery">
+<div style="padding:130px 0 64px;background:var(--brown);position:relative;overflow:hidden;border-bottom:1px solid rgba(200,134,42,.1)">
+  <div style="position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1400&q=75&fit=crop') center/cover;opacity:.15"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div style="font-size:12px;color:var(--light);letter-spacing:1px;margin-bottom:16px;cursor:pointer" onclick="go('home')">Home / <span style="color:var(--amber)">Gallery</span></div>
+    <span class="script" style="font-size:28px">A Feast for the Eyes</span>
+    <h1 style="font-family:var(--font-h);font-size:clamp(48px,6vw,80px);font-weight:700;color:var(--cream);line-height:.95;letter-spacing:-.5px;margin:10px 0 14px">GALLERY</h1>
+    <p style="color:var(--light);font-size:16px;font-weight:300;max-width:500px">Our food, our space, our people. Come see what we're about.</p>
+  </div>
+</div>
+
+<section class="gallery-section">
+  <div class="gallery-mosaic fu">
+    <div class="gal-item tall" onclick="openLB(this)"><img loading="lazy" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80&fit=crop" alt="Restaurant"/><div class="gal-ov"></div></div>
+    <div class="gal-item" onclick="openLB(this)"><img loading="lazy" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80&fit=crop" alt="Nyama Choma"/><div class="gal-ov"></div></div>
+    <div class="gal-item" onclick="openLB(this)"><img loading="lazy" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80&fit=crop" alt="Food"/><div class="gal-ov"></div></div>
+    <div class="gal-item" onclick="openLB(this)"><img loading="lazy" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80&fit=crop" alt="Dining"/><div class="gal-ov"></div></div>
+    <div class="gal-item" onclick="openLB(this)"><img loading="lazy" src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=600&q=80&fit=crop" alt="Platter"/><div class="gal-ov"></div></div>
+    <div class="gal-item wide" onclick="openLB(this)"><img loading="lazy" src="https://images.unsplash.com/photo-1514190051997-0f6f39ca5cde?w=900&q=80&fit=crop" alt="Ambience"/><div class="gal-ov"></div></div>
+    <div class="gal-item" onclick="openLB(this)"><img loading="lazy" src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=600&q=80&fit=crop" alt="Chicken"/><div class="gal-ov"></div></div>
+  </div>
+  <div style="text-align:center;padding:32px 0">
+    <p style="color:var(--light);font-size:13px;letter-spacing:1px;text-transform:uppercase">Follow us on Instagram for daily food photos</p>
+    <p style="font-family:var(--font-h);font-size:18px;color:var(--amber);margin-top:6px;font-style:italic">@nerkwo_restaurant</p>
+  </div>
+</section>
+
+<div class="cta-band"><div class="container"><div class="cta-inner fu"><h2>Looking good? <em>Taste even better.</em></h2><p>Reserve your table today and experience it for yourself.</p><div class="cta-btns"><button class="btn-amber" onclick="go('contact')">Reserve a Table ›</button><button class="btn-outline" onclick="go('menu')">View Menu</button></div></div></div></div>
+</template>
+
+<!-- CONTACT -->
+<template id="t-contact">
+<div style="padding:130px 0 64px;background:var(--brown);position:relative;overflow:hidden;border-bottom:1px solid rgba(200,134,42,.1)">
+  <div style="position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=75&fit=crop') center/cover;opacity:.1"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div style="font-size:12px;color:var(--light);letter-spacing:1px;margin-bottom:16px;cursor:pointer" onclick="go('home')">Home / <span style="color:var(--amber)">Contact</span></div>
+    <span class="script" style="font-size:28px">Find Us</span>
+    <h1 style="font-family:var(--font-h);font-size:clamp(48px,6vw,80px);font-weight:700;color:var(--cream);line-height:.95;letter-spacing:-.5px;margin:10px 0 14px">CONTACT US</h1>
+    <p style="color:var(--light);font-size:16px;font-weight:300;max-width:500px">Reserve a table, place a takeaway order, or just drop in. We're always glad to see you.</p>
+  </div>
+</div>
+
+<section class="res-section">
+  <div class="res-inner">
+    <div class="res-info">
+      <div>
+        <h2>Reserve Your Table</h2>
+        <p>Walk-ins are always welcome. Reserve ahead to guarantee your spot — especially on Friday and Saturday evenings.</p>
+        <div class="res-details">
+          <div class="res-detail"><span class="res-detail-icon">📍</span><div><div class="res-detail-lbl">Location</div><div class="res-detail-val">Plainsview Road, South B, South B, Nairobi</div></div></div>
+          <div class="res-detail"><span class="res-detail-icon">📞</span><div><div class="res-detail-lbl">Phone</div><div class="res-detail-val">+254 721 541 206</div></div></div>
+          <div class="res-detail"><span class="res-detail-icon">💬</span><div><div class="res-detail-lbl">WhatsApp Orders</div><div class="res-detail-val">+254 721 541 206</div></div></div>
+          <div class="res-detail"><span class="res-detail-icon">🕐</span><div><div class="res-detail-lbl">Opening Hours</div><div class="res-detail-val">Mon–Sun: 10:00 AM – 10:00 PM Daily<br/>Kitchen closes 30 mins before closing</div></div></div>
+          <div class="res-detail"><span class="res-detail-icon">🅿️</span><div><div class="res-detail-lbl">Parking</div><div class="res-detail-val">Free parking available on premises</div></div></div>
+        </div>
+      </div>
+      <div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,.15)">
+        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:10px">Find us on maps</div>
+        <a href="https://maps.google.com/?q=Plainsview Road, South B Nairobi" target="_blank" class="btn-brown" style="font-size:12px">Open Google Maps ›</a>
+      </div>
+    </div>
+    <div class="res-form-wrap">
+      <h3>Make a Reservation</h3>
+      <form id="resForm">
+        <div class="fr2">
+          <div class="fg"><label>Your Name</label><input type="text" placeholder="Full name" required/></div>
+          <div class="fg"><label>Phone / WhatsApp</label><input type="tel" placeholder="+254 7XX XXX XXX" required/></div>
+        </div>
+        <div class="fr2">
+          <div class="fg"><label>Date</label><input type="date" required/></div>
+          <div class="fg"><label>Time</label><input type="time" min="08:00"/></div>
+        </div>
+        <div class="fr2">
+          <div class="fg"><label>Number of Guests</label><select><option>1–2 guests</option><option>3–5 guests</option><option>6–10 guests</option><option>10–20 guests</option><option>Large group (20+)</option></select></div>
+          <div class="fg"><label>Occasion</label><select><option>Regular dining</option><option>Birthday</option><option>Anniversary</option><option>Corporate</option><option>Family gathering</option><option>Other</option></select></div>
+        </div>
+        <div class="fg"><label>Special Requests</label><textarea rows="3" placeholder="Dietary requirements, seating preferences, cake message..."></textarea></div>
+        <button type="submit" class="btn-submit">Confirm Reservation ›</button>
+        <p style="text-align:center;font-size:12px;color:var(--light);margin-top:12px">We'll confirm via WhatsApp within 1 hour</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="sp" style="background:var(--cream-2)">
+  <div class="container">
+    <div class="sec-hdr ctr fu"><span class="script">Frequently Asked</span><h2>Good to <em>Know</em></h2></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:800px;margin:0 auto" class="fu">
+      <div style="background:#fff;border-radius:4px;padding:24px;border-top:3px solid var(--amber)"><div style="font-family:var(--font-h);font-size:16px;font-weight:600;color:var(--brown);margin-bottom:8px">Do you take walk-ins?</div><p style="color:var(--warm);font-size:14px;font-weight:300;line-height:1.7">Yes, always. Walk-ins are welcome any time. We only recommend reserving on Friday and Saturday evenings when we get very busy.</p></div>
+      <div style="background:#fff;border-radius:4px;padding:24px;border-top:3px solid var(--amber)"><div style="font-family:var(--font-h);font-size:16px;font-weight:600;color:var(--brown);margin-bottom:8px">Do you do takeaway?</div><p style="color:var(--warm);font-size:14px;font-weight:300;line-height:1.7">Yes. WhatsApp us your order on +254 721 541 206 and we'll have it packed and ready. We also work with delivery riders for nearby areas.</p></div>
+      <div style="background:#fff;border-radius:4px;padding:24px;border-top:3px solid var(--amber)"><div style="font-family:var(--font-h);font-size:16px;font-weight:600;color:var(--brown);margin-bottom:8px">Can you host events?</div><p style="color:var(--warm);font-size:14px;font-weight:300;line-height:1.7">Absolutely. We've hosted birthdays, baby showers, corporate lunches, and weddings. Contact us for a group booking quote.</p></div>
+      <div style="background:#fff;border-radius:4px;padding:24px;border-top:3px solid var(--amber)"><div style="font-family:var(--font-h);font-size:16px;font-weight:600;color:var(--brown);margin-bottom:8px">How do you accept payment?</div><p style="color:var(--warm);font-size:14px;font-weight:300;line-height:1.7">We accept M-Pesa, cash, and major bank cards. Till number and buy-goods number available at the counter.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band"><div class="container"><div class="cta-inner fu"><h2>Still have <em>questions?</em></h2><p>Just WhatsApp us — we're friendly and fast to respond.</p><div class="cta-btns"><a href="https://wa.me/254721541206" target="_blank" class="btn-amber">WhatsApp Us ›</a><a href="tel:+254 721 541 206" class="btn-outline">Call +254 721 541 206</a></div></div></div></div>
+</template>
+
+<!-- SHARED FOOTER -->
+<template id="t-footer">
+<footer>
+  <div class="container">
+    <div class="ft-grid fu">
+      <div class="ft-brand">
+        <h3>Nerkwo Restaurant</h3>
+        <div class="tagline">Best Choma in Nairobi</div>
+        <p>Serving the best nyama choma and Kenyan cuisine in South B, Nairobi. Fresh every day, warm every visit.</p>
+        <div class="ft-social"><a title="Facebook">f</a><a title="Instagram">ig</a><a title="TikTok">tk</a><a href="https://wa.me/254721541206" target="_blank" title="WhatsApp">wa</a></div>
+      </div>
+      <div class="ft-col"><h4>Navigate</h4><ul><li><a onclick="go('home')">Home</a></li><li><a onclick="go('menu')">Our Menu</a></li><li><a onclick="go('about')">About Us</a></li><li><a onclick="go('gallery')">Gallery</a></li><li><a onclick="go('contact')">Contact</a></li></ul></div>
+      <div class="ft-col"><h4>Menu Highlights</h4><ul><li>Nyama Choma</li><li>Mixed Grill Platter</li><li>Kuku Choma</li><li>Ugali & Stew</li><li>Dawa Cocktail</li></ul></div>
+      <div class="ft-col"><h4>Find Us</h4><ul><li>Plainsview Road, South B</li><li>South B, Nairobi</li><li><a href="tel:+254 721 541 206">+254 721 541 206</a></li><li>Open: 10:00 AM – 10:00 PM Daily</li><li><a href="https://wa.me/254721541206" target="_blank">WhatsApp Us</a></li></ul></div>
+    </div>
+    <div class="ft-bot"><p>© 2025 Nerkwo Restaurant. All rights reserved.</p><p class="ft-credit">✦ Built by Visuoscope Limited · visuoscope.co.ke</p></div>
+  </div>
+</footer>
+</template>
+
+<script>
+/* ═══════════════════════ ROUTER ═══════════════════════ */
+let cur = 'home';
+const app = document.getElementById('app');
+
+function go(page){
+  if(page===cur && app.innerHTML){window.scrollTo({top:0,behavior:'smooth'});return}
+  app.classList.add('fading');
+  setTimeout(()=>{
+    cur=page;
+    const tpl=document.getElementById('t-'+page);
+    const ft=document.getElementById('t-footer');
+    if(!tpl)return;
+    app.innerHTML=tpl.innerHTML+ft.innerHTML;
+    app.classList.remove('fading');
+    window.scrollTo({top:0,behavior:'instant'});
+    updateNav();
+    initPage(page);
+    revealImgs();
+  },210);
+}
+
+/* ═══════════════════════ NAV ═══════════════════════ */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',window.scrollY>40);
+  // Switch nav to light theme on light-bg pages
+  nav.classList.toggle('light',window.scrollY>80&&cur!=='home'&&cur!=='gallery');
+});
+document.getElementById('hbg').addEventListener('click',()=>nav.classList.toggle('open'));
+
+function updateNav(){
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  const map={home:0,menu:1,about:2,gallery:3,contact:4};
+  const links=document.querySelectorAll('.nav-links a');
+  if(links[map[cur]])links[map[cur]].classList.add('active');
+  // nav light/dark
+  nav.classList.remove('light');
+  if(cur!=='home'&&cur!=='gallery')nav.classList.add('light');
+  else nav.classList.remove('light');
+}
+
+/* ═══════════════════════ PAGE INIT ═══════════════════════ */
+function initPage(page){
+  // Scroll fade-ups
+  setTimeout(()=>{
+    const obs=new IntersectionObserver((entries)=>{
+      entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('vis'),i*80)});
+    },{threshold:0.06});
+    document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+  },50);
+
+  if(page==='menu')initMenu();
+  if(page==='contact')initContact();
+}
+
+function initMenu(){
+  document.querySelectorAll('.menu-tab').forEach(tab=>{
+    tab.addEventListener('click',function(){
+      document.querySelectorAll('.menu-tab').forEach(t=>t.classList.remove('active'));
+      document.querySelectorAll('.menu-panel').forEach(p=>p.classList.remove('active'));
+      this.classList.add('active');
+      const panel=document.getElementById('tab-'+this.dataset.tab);
+      if(panel){panel.classList.add('active');panel.classList.add('vis')}
+    });
+  });
+}
+
+function initContact(){
+  const form=document.getElementById('resForm');
+  if(form)form.addEventListener('submit',function(e){
+    e.preventDefault();
+    const btn=this.querySelector('button[type="submit"]');
+    btn.textContent='✓ Reservation confirmed — we\'ll WhatsApp you shortly!';
+    btn.style.background='#2d7a2e';
+    btn.disabled=true;
+  });
+}
+
+/* ═══════════════════════ IMAGES ═══════════════════════ */
+function revealImgs(){
+  setTimeout(()=>{
+    document.querySelectorAll('img').forEach(img=>{
+      if(img.complete)img.style.opacity='1';
+      else img.onload=()=>{img.style.opacity='1'};
+      img.style.transition='opacity .4s ease';
+    });
+  },80);
+}
+
+/* ═══════════════════════ LIGHTBOX ═══════════════════════ */
+function openLB(el){
+  const img=el.querySelector('img');
+  document.getElementById('lb-img').src=img.src.replace('w=600','w=1200').replace('w=400','w=1000');
+  document.getElementById('lb').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLB(){
+  document.getElementById('lb').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('lb').addEventListener('click',e=>{if(e.target===document.getElementById('lb'))closeLB()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB()});
+
+/* ═══════════════════════ INIT ═══════════════════════ */
+go('home');
+</script>
+</body>
+</html>
